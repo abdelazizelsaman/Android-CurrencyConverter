@@ -20,13 +20,20 @@ public class MainActivity extends AppCompatActivity {
         if (value.length()==0){
             return "";
         }
+
+        if (value.startsWith(".")){
+
+            value = "0." + value.substring(1);
+        }
         switch (currency) {
             case "USD": {
-                return String.valueOf(Double.parseDouble(value) * 17);
+                //return String.valueOf(Double.parseDouble(value) * 17);
+                return String.format("%.2f",Double.parseDouble(value) * 17);
             }
 
             case "EGP": {
-                return String.valueOf(Double.parseDouble(value) / 17);
+                //return String.valueOf(Double.parseDouble(value) / 17);
+                return String.format("%.2f", Double.parseDouble(value)/17);
             }
         }
 
