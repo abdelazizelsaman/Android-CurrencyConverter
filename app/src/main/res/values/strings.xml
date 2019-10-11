@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Hello World</string>
+    <string name="logo">Currency Converter</string>
+    <string name="desc">"Now you can change currencies from USD to EGP and vice versa in no time. Changes are applied simultaneously. Results are rounded to 2 digits after the decimal point."</string>
+    <string name="egp">EGP</string>
+    <string name="usd">USD</string>
 </resources>

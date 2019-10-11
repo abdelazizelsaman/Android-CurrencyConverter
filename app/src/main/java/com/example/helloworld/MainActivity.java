@@ -1,10 +1,12 @@
  package com.example.helloworld;
 
+ import android.content.Context;
  import android.os.Bundle;
  import android.text.Editable;
  import android.text.TextWatcher;
  import android.view.View;
  import android.widget.EditText;
+ import android.widget.Toast;
 
  import androidx.appcompat.app.AppCompatActivity;
 
@@ -106,85 +108,12 @@ public class MainActivity extends AppCompatActivity {
         usdInput.setOnFocusChangeListener(mFocusChangeListener);
         egpInput.setOnFocusChangeListener(mFocusChangeListener);
 
-//        usdInput.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(!(usdInput.getText().toString().length() == 0)){
-//                    egpInput.setText(usdInput.getText() + "321");
-//                }
-//                return false;
-//            }
-//        });
-//        egpInput.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(!(egpInput.getText().toString().length() == 0)){
-//                    usdInput.setText(egpInput.getText() + "123");
-//
-//                }
-//                return false;
-//            }
-//        });
+        Context context = getApplicationContext();
+        CharSequence text = "Loaded successfully";
+        int duration = Toast.LENGTH_SHORT;
 
-//
-//        usdInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//
-//                if(hasFocus){
-//                    if(!(usdInput.getText().toString().length() == 0)){
-//                        egpInput.setText(usdInput.getText() + "321");
-//                    }
-//
-//
-//                }
-////                if(usdFocus){
-////                    egpInput.removeTextChangedListener(egp);
-////                    usdFocus = false;
-////                }
-////                usdInput.addTextChangedListener(usd);
-//
-//            }
-//        });
-
-
-
-
-//        egpInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus){
-//                    if(!(egpInput.getText().toString().length() == 0)){
-//                        usdInput.setText(egpInput.getText() + "123");
-//
-//                    }
-//
-//                }
-////                if (egpFocus) {
-////                    usdInput.removeTextChangedListener(usd);
-////                    egpFocus = false;
-////                }
-////                egpInput.addTextChangedListener(egp);
-//            }
-//        });
-
-//        if(usdInput.isFocusable()){
-//            if(usdFocus){
-//                egpInput.removeTextChangedListener(egp);
-//                usdFocus = false;
-//            }
-//            usdInput.addTextChangedListener(usd);
-//
-//        }else if(egpInput.isFocusable()) {
-//            if (egpFocus) {
-//                usdInput.removeTextChangedListener(usd);
-//                egpFocus = false;
-//            }
-//            egpInput.addTextChangedListener(egp);
-//        }
-
-
-
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
     }
 
