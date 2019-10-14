@@ -19,8 +19,23 @@ public class MainActivity extends AppCompatActivity {
     TextWatcher usd, egp;
 
     public String change(String currency, String value) {
+
+        String returnValue = null;
+
         if (value.length()==0){
             return "";
+        }
+
+        if(value.length() == 13){
+
+            Context context = getApplicationContext();
+
+            CharSequence text2 = "Max limit reached!";
+
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text2, duration);
+            toast.show();
         }
 
         if (value.startsWith(".")){
@@ -30,12 +45,16 @@ public class MainActivity extends AppCompatActivity {
         switch (currency) {
             case "USD": {
                 //return String.valueOf(Double.parseDouble(value) * 17);
-                return String.format("%.2f",Double.parseDouble(value) * 17);
+
+                return String.format("%.2f", Double.parseDouble(value) * 16.2);
+
             }
 
             case "EGP": {
                 //return String.valueOf(Double.parseDouble(value) / 17);
-                return String.format("%.2f", Double.parseDouble(value)/17);
+
+                return String.format("%.2f", Double.parseDouble(value)/16.2);
+
             }
         }
 
@@ -63,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                egpInput.setText(change("USD",usdInput.getText().toString()));
+                String m = change("USD",usdInput.getText().toString());
+                if(m.endsWith(".")){
+                    m = m.substring(0, m.length()-1);
+                }
+                egpInput.setText(m);
             }
         };
 
@@ -80,7 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
              @Override
              public void afterTextChanged(Editable s) {
-                 usdInput.setText(change("EGP", egpInput.getText().toString()));
+                 String l = change("EGP", egpInput.getText().toString());
+                 if(l.endsWith(".")){
+                     l = l.substring(0,l.length()-1);
+                 }
+                 usdInput.setText(l);
              }
          };
 
@@ -109,10 +136,12 @@ public class MainActivity extends AppCompatActivity {
         egpInput.setOnFocusChangeListener(mFocusChangeListener);
 
         Context context = getApplicationContext();
-        CharSequence text = "Loaded successfully";
+        CharSequence text1 = "Loaded successfully";
+        CharSequence text2 = "Max limit reached !";
+
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
+        Toast toast = Toast.makeText(context, text1, duration);
         toast.show();
 
     }
